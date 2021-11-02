@@ -32,3 +32,29 @@ const stop = document.querySelector(`button`);
 stop.addEventListener(`click`, () => {
     clearInterval(time);
 });
+
+
+// BONUS
+
+// 4
+const countdown = document.querySelector(`#countdown`);
+const p4 = document.createElement(`p`);
+p4.innerHTML = `2:00`;
+countdown.append(p4);
+
+const startTime = 2;
+let time2 = startTime * 60;
+function updateCountdown(){
+    const minutes = Math.floor(time2 / 60);
+    let seconds = time2 % 60;
+    seconds = seconds < 10 ? `0` + seconds : seconds ;
+    countdown.innerHTML = `${minutes} : ${seconds}`;
+    time2--;
+}
+
+setInterval(() => {
+    updateCountdown();
+    if (time2 <= 0){
+        countdown.innerHTML = `TIME IS UP`;
+    }
+}, 1000);
